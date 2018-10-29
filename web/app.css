@@ -1,0 +1,81 @@
+/*
+ * This file is provided for application-specific style rules.
+ *
+ * By default, Maqetta includes this CSS file within HTML pages
+ * authored in Maqetta.
+ *
+ * This file is typically used to override style rules found in
+ * theme CSS files. For example, suppose the theme CSS file has:
+ *
+ * .claro .dijitButton .dijitButtonNode {
+ *		padding:2px 4px 4px 4px;
+ * }
+ *
+ * But for your application suppose you want to tighten the padding
+ * for buttons. Then, you might include the following style rule
+ * in this file (assuming that you accept Maqetta's default where
+ * id "myapp" is present on the BODY element, and assuming
+ * that you are using the "claro" theme):
+ *
+ * #myapp.claro .dijitButton .dijitButtonNode {
+ *		padding:1px 3px 3px 3px;
+ * }
+ *
+ * Because of CSS precedence rules (see [1]), the above style rule
+ * (which begins with #myapp.claro) will "win the cascade" versus 
+ * the style rule from the theme CSS file due to the use of the
+ * ID select (#myapp), which has higher specificity than the class
+ * selectors used throughout the Claro theme.
+ *
+ * [1] http://www.w3.org/TR/CSS21/cascade.html#cascade
+ */
+html,body {
+	height: 100%;
+	width: 100%;
+}
+
+
+.editFocusFrame {
+	position:absolute;
+	overflow:hidden;
+	border:none;
+	background:#d3e1ee;
+	border:2px solid #6a94dc;
+}
+.editFocusFrameLEFT {
+	width:4px;
+	border-right:none;
+}
+.editFocusFrameRIGHT {
+	width:4px;
+	border-left:none;
+}
+.editFocusFrameTOP {
+	height:4px;
+	border-bottom:none;
+}
+.editFocusFrameBOTTOM {
+	height:4px;
+	border-top:none;
+}
+.editFocusNob {
+
+	background-color:#246ce4;
+	background-image:-webkit-linear-gradient(#2b7bfc,#246ce4,#042378);
+	background-image:-moz-linear-gradient(#2b7bfc,#246ce4,#042378);
+	background-image:-ms-linear-gradient(#2b7bfc,#246ce4,#042378);
+	background-image:-linear-gradient(#2b7bfc,#246ce4,#042378);
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-ms-border-radius:10px;
+	border-radius:10px;
+	border:1px solid white;
+	box-shadow:0px 2px 2px #888;
+	position:absolute;
+	width:10px;
+	height:10px;
+	overflow:hidden;
+}
+
+.DianTiImage{ background-image:url(img/zhanwei.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}
+.DianTiVideo{ background-image:url(img/videozhanwei.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}

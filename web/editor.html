@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Untitled</title>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+<script type="text/javascript">
+require([
+  "dijit/dijit",
+  "dojo/parser",
+  "maqetta/space",
+  "maqetta/AppStates",
+  "dijit/layout/BorderContainer",
+  "dijit/layout/ContentPane",
+  "dijit/form/TextBox",
+  "dijit/form/Textarea"
+]);
+</script>
+<style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "app.css";
+</style>
+<script type="text/javascript" src="app.js"></script>
+
+
+
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jqueryui/style.css">
+    <style>
+        #resizable { width: 150px; height: 150px; padding: 0.5em; }
+        #resizable h3 { text-align: center; margin: 0; }
+        .ui-resizable-helper { border: 2px dotted #00F; }
+    </style>
+
+
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" class="claro" data-maq-ws="collapse" id="myapp" data-maq-appstates="{}">
+ <div data-dojo-type="dijit/layout/BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+   <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="top" splitter="false" maxSize="Infinity" style="height: 50px;" doLayout="false">
+    <label style="position: absolute; z-index: 900; left: 47px; top: 12.5px;">
+      Layout</label>
+    <input type="text" data-dojo-type="dijit/form/TextBox" id="view_x" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="position: absolute; z-index: 900; width: 57px; left: 114px; top: 12.5px;"></input>
+    <input type="text" data-dojo-type="dijit/form/TextBox" id="view_y" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="position: absolute; z-index: 900; width: 58px; left: 196px; top: 12.5px;"></input>
+    <input type="text" data-dojo-type="dijit/form/TextBox" style="width: 61px; position: absolute; z-index: 900; left: 273px; top: 12.5px; height: view_w;"></input>
+    <input type="text" data-dojo-type="dijit/form/TextBox" style="width: 58px; position: absolute; z-index: 900; left: 355px; top: 12.5px; height: view_h;"></input>
+  </div>
+   <div data-dojo-type="dijit/layout/ContentPane" id="left_content" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="false" maxSize="Infinity" style="width: 53px; background-color: #7bc2f5;" doLayout="false">
+     <img id="dianti_label" src="img/label.png"   ondragend="dragEndCreateView(event)" draggable="true"  ></img>
+     <img id="dianti_moive" src="img/moive.png" ondragend="dragEndCreateView(event)" draggable="true" ></img>
+     <img id="dianti_picture"  src="img/picture.png" ondragend="dragEndCreateView(event)" draggable="true" ></img>
+   </div>
+   <div data-dojo-type="dijit/layout/ContentPane" id="right_content" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="right" splitter="false" maxSize="Infinity" style="width: 216px; left: 999px; top: 5px;" doLayout="false">
+    <label style="position: absolute; z-index: 900; left: 20.546875px; top: 166px;">
+      Text</label>
+    <textarea type="text" data-dojo-type="dijit/form/Textarea" style="width: 200px; height: auto; position: absolute; z-index: 900; left: 20.546875px; top: 196px;"></textarea>
+  </div>
+   <div data-dojo-type="dijit/layout/ContentPane" id="main_content" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
+
+       <div class="editFocusStdChrome" >
+           <div class="editFocusFrame editFocusFrameLEFT" id="editFocusFrameLEFT"  style=" z-index: 900; left: 94px; top: 94px; height: 108px;"></div>
+           <div class="editFocusFrame editFocusFrameRIGHT" id="editFocusFrameRIGHT" style=" z-index: 900; top: 94px; height: 108px; left: 200px;"></div>
+           <div class="editFocusFrame editFocusFrameTOP" id="editFocusFrameTOP" style="z-index: 900; left: 94px; top: 94px; width: 108px;"></div>
+           <div class="editFocusFrame editFocusFrameBOTTOM" id="editFocusFrameBOTTOM" style="z-index: 900; left: 94px; top: 200px; width: 108px;"></div>
+       </div>
+   </div>
+
+ </div>
+
+<script>
+
+    var selectID = "";
+
+    hideSelectView();
+    document.onmouseup=function (ev) {
+        console.log("document mose up ");
+        showSelectView(selectID);
+    }
+
+
+    document.onmousedown=function (ev) {
+        console.log("document mose down ");
+
+
+        var obj = document.getElementById("main_content");
+        var x = obj.offsetLeft;
+        var y = obj.offsetTop;
+        var width = obj.offsetWidth;
+        var height = obj.offsetHeight;
+
+
+        if (ev.clientX >x && ev.clientX < (x+width) ) {
+            if (ev.clientY >y  && ev.clientY < (y+height) ) {
+                selectView(ev.clientX-x,ev.clientY-y);
+            }
+        }
+        showSelectView(selectID);
+    }
+
+    function selectView(x ,y) {
+        var array =document.getElementsByClassName("dianti");
+        for (index in array){
+            var top = array[index].offsetTop;
+            var left = array[index].offsetLeft;
+            var w = array[index].offsetWidth;
+            var h = array[index].offsetHeight;
+            if (x>left && x<(left+w)){
+                if(y>top && y < (top+h)){
+                    selectID = array[index].id;
+                    return ;
+                }
+            }
+        }
+        selectID = "";
+    }
+
+    function initNewView(id){
+
+
+        $("#"+id).resizable({
+            helper: "ui-resizable-helper"
+        });
+        $("#"+id).draggable({ helper: "original",
+            cursor: "move"});
+
+
+        $("#"+id).onmousedown = function (ev) {
+            if (selectID.length>0){
+                // $("#"+selectID).css("background", "#FFFFFF");
+            }
+
+            //当前被点击的控件改变背景色
+            //$(this).css("background", "#588600");
+            console.log("select ID is :"+$(this));
+            selectID =  ev.target.id;
+            showSelectView(selectID);
+        }
+        $("#"+id).click(function () {
+            console.log("select ID is :"+$(this));
+            selectID = $(this).attr('id');
+            showSelectView(selectID);
+        });
+
+    }
+
+    $(function() {
+        var arrays =  document.getElementsByClassName("dianti");
+        for (index in arrays){
+            var id =arrays[index].id;
+            initNewView(id);
+        }
+    });
+
+    // $("#dianti_label").bind("ondragend",dragEnd);
+
+    function dragEndCreateView(event){
+
+        var id = event.currentTarget.id;
+
+        console.log("drag me :"+id);
+
+        console.log("drag end :"+event.clientX+ " , "+event.clientY);
+        var position = $("#main_content").position();
+        var width = $("#main_content").width();
+        var heith = $("#main_content").height();
+        if (event.clientX<position.left || event.clientX > (position.left +width)){
+            return ;
+        }
+        if (event.clientY<position.top || event.clientY > (position.top +heith)){
+            return ;
+        }
+        console.log("drag end  need create one element ");
+        var date = new Date();
+        var id = "dianti"+date.getHours()+date.getMinutes()+date.getSeconds();
+        if (event.currentTarget.id == 'dianti_label') {
+            $("#main_content").append('<p id="new_view"   ondrop="dragEndSelectView(this)" class="ui-widget-content  dianti DianTiText" style="position: absolute; left: 200px;top: 200px;  height: 30px;width: 200px;">' +
+                'this is a testview </p>');
+        }else if (event.currentTarget.id == 'dianti_picture') {
+            $("#main_content").append('<div id="new_view"    class="ui-widget-content dianti  DianTiImage" style=" background-image:url(img/zhanwei.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;  position:absolute;  left: 100px; top: 100px; height: 100px;width: 100px;"></div>');
+
+        }else if(event.currentTarget.id == 'dianti_moive'){
+            $("#main_content").append('<div id="new_view"    class="ui-widget-content dianti DianTiVideo" style=" background-image:url(img/videozhanwei.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;  position:absolute;  left: 100px; top: 100px; height: 100px;width: 100px;"></div>');
+        }
+        $("#new_view").attr('id',id);
+
+        initNewView(id);
+        var x = event.clientX - position.left;
+        var y =  event.clientY - position.top;
+        $('#'+id).css({'left':x+'px','top':y+'px'});
+        selectID = id;
+        showSelectView(selectID);
+    }
+
+    function dragEndSelectView(obj){
+
+        console.log("dragEndSelectView");
+
+        showSelectView(obj.id);
+    }
+
+    document.onkeydown=doKey;
+
+    function doKey(e) {
+        console.log("dokey :"+e.keyCode);
+        if (e.keyCode  == 46){
+            if(selectID.length >0){
+                $("#"+selectID).remove();
+                selectID = "";
+                showSelectView(selectID);
+            }
+        }
+    }
+
+    function hideSelectView() {
+        $('#editFocusFrameBOTTOM').hide();
+        $('#editFocusFrameTOP').hide();
+        $('#editFocusFrameRIGHT').hide();
+        $('#editFocusFrameLEFT').hide();
+    }
+
+    function showSelectView(id) {
+
+        if(id.length ==0){
+            hideSelectView();
+            return ;
+        }
+
+        var obj = document.getElementById(id);
+        var x = obj.offsetLeft;
+        var y = obj.offsetTop;
+        var width = obj.offsetWidth;
+        var height = obj.offsetHeight;
+
+
+        $('#editFocusFrameLEFT').css({'left':(x-6),'top':(y-6),'height':height+8});
+        $('#editFocusFrameRIGHT').css({'left':(x+width),'top':(y-6),'height':height+8});
+        $('#editFocusFrameTOP').css({'left':(x-6),'top':(y-6),'width':width+8});
+        $('#editFocusFrameBOTTOM').css({'left':(x-6),'top':(y+height),'width':width+8});
+
+        $('#editFocusFrameBOTTOM').show();
+        $('#editFocusFrameTOP').show();
+        $('#editFocusFrameRIGHT').show();
+        $('#editFocusFrameLEFT').show();
+
+        console.log("update select view :"+x +" , "+y+ "  , "+width + " , "+height);
+
+    }
+</script>
+
+</body>
+</html>

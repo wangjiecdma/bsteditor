@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Untitled</title>
+    <script type="text/javascript" src="lib/dojo/dojo/dojo.js" data-dojo-config="'parseOnLoad':true,'async':true,'packages':[{'name':'gridx','location':'../gridx'},{'name':'clipart','location':'../../clipart'},{'name':'maqettaSamples','location':'../../../samples'},{'name':'maqetta','location':'../../maqetta'},{'name':'shapes','location':'../../shapes'},{'name':'zazl','location':'../../zazl'},{'name':'widgets','location':'../../custom'}],'themeMap':[['Android','',['themes/android/android.css']],['BlackBerry','',['themes/blackberry/blackberry.css']],['iPad','',['themes/ipad/ipad.css']],['iPhone','',['themes/iphone/iphone.css']],['.*','',['themes/iphone/iphone.css']]],'mblThemeFiles':[],'mblLoadCompatPattern':''"></script>
+    <script type="text/javascript">
+        require([
+            "dijit/dijit",
+            "dojo/parser",
+            "maqetta/space",
+            "maqetta/AppStates",
+            "dijit/layout/BorderContainer",
+            "dijit/layout/ContentPane",
+            "dijit/form/TextBox",
+            "dijit/form/Button",
+            "dojox/io/xhrScriptPlugin",
+            "dojo/data/ItemFileReadStore",
+            "gridx/Grid",
+            "gridx/core/model/cache/Async",
+            "dojox/data/CsvStore",
+            "dijit/form/DropDownButton",
+            "dijit/Menu",
+            "dijit/MenuItem"
+        ]);
+    </script>
+    <style>@import "themes/claro/document.css";@import "themes/claro/claro.css";@import "lib/dojo/gridx/resources/claro/Gridx.css";@import "lib/dojo/gridx/resources/claro/Gridx_rtl.css";@import "app.css";
+    </style>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="editor.js"></script>
+
+
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="jqueryui/style.css">
+    <style>
+        #resizable { width: 150px; height: 150px; padding: 0.5em; }
+        #resizable h3 { text-align: center; margin: 0; }
+        .ui-resizable-helper { border: 2px dotted #00F; }
+    </style>
+
+
+
+
+</head>
+<body data-maq-flow-layout="true" data-maq-comptype="desktop" class="claro" data-maq-ws="collapse" data-maq-appstates="{}" id="myapp">
+<div data-dojo-type="dijit/layout/BorderContainer" design="headline" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+    <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="top" splitter="false" maxSize="Infinity" style="height: 50px;">
+        <label style="position: absolute; z-index: 900; left: 18px; top: 34.5px;">
+            屏幕分辨率(像素)：</label>
+        <select style="position: absolute; z-index: 900; left: 124.90625px; top: 34.5px;">
+            <option value="800x600">
+                800x600</option>
+            <option value="1024x768">
+                1024x768</option>
+        </select>
+        <label style="position: absolute; z-index: 900; left: 269.5px; top: 34.5px;">
+            显示（旋转）方向：</label>
+        <select style="position: absolute; z-index: 900; left: 381px; top: 34.5px;">
+            <option value="横向">
+                横向</option>
+            <option value="纵向">
+                纵向</option>
+        </select>
+        <input type="button" data-dojo-type="dijit/form/Button" intermediateChanges="false" label="导出资源包" iconClass="dijitNoIcon" style="position: absolute; z-index: 900; left: 479.0125px; top: 29.2328125px;"></input>
+        <input type="button" data-dojo-type="dijit/form/Button" intermediateChanges="false" label="添加图片" iconClass="dijitNoIcon" style="position: absolute; z-index: 900; left: 618px; top: 29.209375px;"></input>
+        <input type="button" data-dojo-type="dijit/form/Button" intermediateChanges="false" label="管理图片" iconClass="dijitNoIcon" style="position: absolute; z-index: 900; left: 740px; top: 29.19375px;"></input>
+    </div>
+    <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="bottom" splitter="false" maxSize="Infinity" style="height: 60px;">
+        <img id="dianti_label" src="img/label.png"   ondragend="dragEndCreateView(event)" draggable="true"  ></img>
+        <img id="dianti_moive" src="img/moive.png" ondragend="dragEndCreateView(event)" draggable="true" ></img>
+        <img id="dianti_picture"  src="img/picture.png" ondragend="dragEndCreateView(event)" draggable="true" ></img>
+    </div>
+    <div data-dojo-type="dijit/layout/ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="right" splitter="false" maxSize="Infinity" style="width: 242px;">
+        <label style="font-size: 30px; position: absolute; z-index: 900; left: 8px; top: 8px;">
+            属性设置</label>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 81px;">
+            组件类型</label>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 125px;">
+            组件名称</label>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="position: absolute; z-index: 900; width: 112px; left: 114px; top: 120px;" id="dianti_name" ></input>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 169px;">
+            定点坐标 X</label>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 211px;">
+            定点坐标 Y</label>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 251px;">
+            区域宽度</label>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 292.5px;">
+            区域高度</label>
+        <label  id="dianti_type" style="position: absolute; z-index: 900; left: 114px; top: 81px;">
+            </label>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 112px; position: absolute; z-index: 900; left: 114px; top: 166.5px;" id="dianti_x" ></input>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 112px; position: absolute; z-index: 900; left: 114px; top: 208.5px;" id="dianti_y"></input>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 112px; position: absolute; z-index: 900; left: 114px; top: 248.5px;" id="dianti_w"></input>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 112px; position: absolute; z-index: 900; left: 114px; top: 290px;" id="dianti_h"></input>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 402px;">
+            资源</label>
+        <input type="button" data-dojo-type="dijit/form/Button" intermediateChanges="false" label="添加资源" iconClass="dijitNoIcon" style="position: absolute; z-index: 900; left: 114px; top: 397px;"></input>
+        <label style="position: absolute; z-index: 900; left: 8px; top: 345.5px;">
+            显示文字</label>
+        <input type="text" data-dojo-type="dijit/form/TextBox" intermediateChanges="false" trim="false" uppercase="false" lowercase="false" propercase="false" selectOnClick="false" style="width: 112px; position: absolute; z-index: 900; left: 114px; top: 343px;"></input>
+    </div>
+    <div data-dojo-type="dijit/layout/ContentPane"   id="main_content_parent"   extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false" style="text-align: center;">
+        <div data-dojo-type="dijit/layout/ContentPane" id="main_content" title="Pane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" style="vertical-align: middle; width: 1024px; height: 768px; position: absolute; z-index: 900; background-color: #a8a0a0;" doLayout="false">
+            <div class="editFocusStdChrome" >
+                <div class="editFocusFrame editFocusFrameLEFT" id="editFocusFrameLEFT"  style=" z-index: 900; left: 94px; top: 94px; height: 108px;"></div>
+                <div class="editFocusFrame editFocusFrameRIGHT" id="editFocusFrameRIGHT" style=" z-index: 900; top: 94px; height: 108px; left: 200px;"></div>
+                <div class="editFocusFrame editFocusFrameTOP" id="editFocusFrameTOP" style="z-index: 900; left: 94px; top: 94px; width: 108px;"></div>
+                <div class="editFocusFrame editFocusFrameBOTTOM" id="editFocusFrameBOTTOM" style="z-index: 900; left: 94px; top: 200px; width: 108px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
